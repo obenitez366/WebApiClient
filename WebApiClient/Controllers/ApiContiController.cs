@@ -27,6 +27,7 @@ namespace WebApiClient.Controllers
             //_clientFactory = clientFactory;
         }
         [HttpPost]
+        [Route("RequestConti")]
         public async Task<string> Post()
         {
             var headers = new Dictionary<string, string>()//headers para conti
