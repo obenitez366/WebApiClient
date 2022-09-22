@@ -42,7 +42,7 @@ namespace WebApiClient.Controllers
             };
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;//protocolos de seguridad
             ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-            var certificate = new X509Certificate2("C:/PuntoaPunto-sandbox.pfx", "puntoapunto.2022");
+            var certificate = new X509Certificate2(@"PuntoaPunto-sandbox.pfx", "puntoapunto.2022");
 
             string nombre = certificate.GetNameInfo(X509NameType.DnsName, false);
             
@@ -80,7 +80,7 @@ namespace WebApiClient.Controllers
         {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-            var certificate = new X509Certificate2(@"C:/trackerSandbox.pfx", "AppFutura");
+            var certificate = new X509Certificate2(@"trackerSandbox.pfx", "AppFutura");
             //var certificate = new X509Certificate2("C:/PuntoaPunto-sandbox.pfx", "puntoapunto.2022");
             string nombre = certificate.GetNameInfo(X509NameType.DnsName, false);
 
