@@ -41,9 +41,10 @@ namespace WebApiClient.Controllers
                 { "Connection", "keep-alive" },
                 { "User-Agent", "Other" },
             };
+            var password = "";//ingresar aqui la clave del certificado
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;//protocolos de seguridad
             ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-            var certificate = new X509Certificate2(@"PuntoaPunto-sandbox.pfx", "puntoapunto.2022");
+            var certificate = new X509Certificate2(@"PuntoaPunto-sandbox.pfx", password);
 
             string nombre = certificate.GetNameInfo(X509NameType.DnsName, false);
             
@@ -79,10 +80,10 @@ namespace WebApiClient.Controllers
         [Route("RequestTest")]
         public async Task<string> RequestTest()//request de prueba a server futura tracker.sandbox
         {
+            var password = "";
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-            var certificate = new X509Certificate2(@"trackerSandbox.pfx", "AppFutura");
-            //var certificate = new X509Certificate2("C:/PuntoaPunto-sandbox.pfx", "puntoapunto.2022");
+            var certificate = new X509Certificate2(@"trackerSandbox.pfx", password);
             string nombre = certificate.GetNameInfo(X509NameType.DnsName, false);
 
             bool esValido = certificate.Verify();
